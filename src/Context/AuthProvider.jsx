@@ -8,12 +8,12 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import app from "../firebase/firebase.config"; // ✅ Make sure this path is correct and the file exists
+import app from "../firebase/firebase.config"; 
 
 // Create context
 export const AuthContext = createContext();
 
-// Initialize Firebase Auth
+
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
