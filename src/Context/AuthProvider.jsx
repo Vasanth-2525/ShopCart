@@ -8,11 +8,11 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import app from "../firebase/firebase.config"; 
+import { app } from "../Firebase/firebase.config";
+
 
 // Create context
 export const AuthContext = createContext();
-
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
