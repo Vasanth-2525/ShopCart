@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import category1 from '../assets/images/categoryTab/01.jpg'
+import category2 from '../assets/images/categoryTab/02.jpg'
+import category3 from '../assets/images/categoryTab/03.jpg'
+import category4 from '../assets/images/categoryTab/04.jpg'
+import category5 from '../assets/images/categoryTab/05.jpg'
+import category6 from '../assets/images/categoryTab/06.jpg'
+import category7 from '../assets/images/categoryTab/07.jpg'
+import category8 from '../assets/images/categoryTab/08.jpg'
 
 const title = "Our Products";
 
@@ -8,67 +16,67 @@ const categories = ["All", "Shoes", "Bags", "Phones", "Beauty"];
 
 const ProductData = [
   {
-    imgUrl: "src/assets/images/categoryTab/01.jpg",
+    imgUrl: category1,
     cate: "Shoes",
     title: "Nike Premier X",
     brand: "Nike",
-    price: "$199.00",
+    price: "₹199.00",
     id: 1,
   },
   {
-    imgUrl: "src/assets/images/categoryTab/02.jpg",
+    imgUrl: category2,
     cate: "Bags",
     title: "Asthetic Bags",
     brand: "D&J Bags",
-    price: "$199.00",
+    price: "₹199.00",
     id: 2,
   },
   {
-    imgUrl: "src/assets/images/categoryTab/03.jpg",
+    imgUrl: category3,
     cate: "Phones",
     title: "iPhone 12",
     brand: "Apple",
-    price: "$199.00",
+    price: "₹199.00",
     id: 3,
   },
   {
-    imgUrl: "src/assets/images/categoryTab/04.jpg",
+    imgUrl: category4,
     cate: "Bags",
     title: "Hiking Bag 15 Nh100",
     brand: "Gucci",
-    price: "$199.00",
+    price: "₹199.00",
     id: 4,
   },
   {
-    imgUrl: "src/assets/images/categoryTab/05.jpg",
+    imgUrl: category5,
     cate: "Shoes",
     title: "Outdoor Sports Shoes",
     brand: "Nike",
-    price: "$199.00",
+    price: "₹199.00",
     id: 5,
   },
   {
-    imgUrl: "src/assets/images/categoryTab/06.jpg",
+    imgUrl: category6,
     cate: "Beauty",
     title: "COSRX Snail Mucin",
     brand: "Zaara",
-    price: "$199.00",
+    price: "₹199.00",
     id: 6,
   },
   {
-    imgUrl: "src/assets/images/categoryTab/07.jpg",
+    imgUrl: category7,
     cate: "Bags",
     title: "Look Less Chanel Bag",
     brand: "Gucci",
-    price: "$199.00",
+    price: "₹199.00",
     id: 7,
   },
   {
-    imgUrl: "src/assets/images/categoryTab/08.jpg",
+    imgUrl: category8,
     cate: "Shoes",
     title: "Casual Sneakers",
     brand: "Bata",
-    price: "$199.00",
+    price: "₹199.00",
     id: 8,
   },
 ];
@@ -94,7 +102,7 @@ const CategoryShow = () => {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-md text-sm border transition ${
+              className={`px-4 py-2 rounded-md text-sm border transition ₹{
                 filter === cat
                   ? "bg-yellow-400 text-white border-yellow-400"
                   : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"

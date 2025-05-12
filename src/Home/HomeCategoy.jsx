@@ -1,5 +1,11 @@
 import { FaWindows } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import homecate1 from '../assets/images/category/01.jpg'
+import homecate2 from '../assets/images/category/02.jpg'
+import homecate3 from '../assets/images/category/03.jpg'
+import homecate4 from '../assets/images/category/04.jpg'
+import homecate5 from '../assets/images/category/05.jpg'
+import homecate6 from '../assets/images/category/06.jpg'
 
 // Constants
 const subTitle = "Choose Any Products";
@@ -8,37 +14,37 @@ const btnText = "Get Started Now";
 
 const categoryList = [
   {
-    imgUrl: "src/assets/images/category/01.jpg",
+    imgUrl: homecate1,
     imgAlt: "category rajibraj91 rajibraj",
     iconName: "icofont-brand-windows",
     title: "DSLR Camera",
   },
   {
-    imgUrl: "src/assets/images/category/02.jpg",
+    imgUrl: homecate2,
     imgAlt: "category rajibraj91 rajibraj",
     iconName: "icofont-brand-windows",
     title: "Shoes",
   },
   {
-    imgUrl: "src/assets/images/category/03.jpg",
+    imgUrl: homecate3,
     imgAlt: "category rajibraj91 rajibraj",
     iconName: "icofont-brand-windows",
     title: "Photography",
   },
   {
-    imgUrl: "src/assets/images/category/04.jpg",
+    imgUrl: homecate4,
     imgAlt: "category rajibraj91 rajibraj",
     iconName: "icofont-brand-windows",
     title: "Formal Dress",
   },
   {
-    imgUrl: "src/assets/images/category/05.jpg",
+    imgUrl: homecate5,
     imgAlt: "category rajibraj91 rajibraj",
     iconName: "icofont-brand-windows",
     title: "Colorful Bags",
   },
   {
-    imgUrl: "src/assets/images/category/06.jpg",
+    imgUrl: homecate6,
     imgAlt: "category rajibraj91 rajibraj",
     iconName: "icofont-brand-windows",
     title: "Home Decor",

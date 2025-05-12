@@ -1,34 +1,37 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import des_img from "../assets/images/shop/01.jpg";
 import userImg from "../assets/images/clients/user.png";
+import review1 from "../assets/images/instructor/01.jpg"
+import review2 from "../assets/images/instructor/02.jpg"
+import review3 from "../assets/images/instructor/03.jpg"
+import review4 from "../assets/images/instructor/04.jpg"
 
-const Review = () => {
+const Review = ({ productImg }) => {
   const [activeTab, setActiveTab] = useState("description");
   const [reviews, setReviews] = useState([
   {
-    imgUrl: "/src/assets/images/instructor/01.jpg",
+    imgUrl: review1,
     imgAlt: "Client thumb",
     name: "Ganelon Boileau",
     date: "Posted on Jun 10, 2022 at 6:57 am",
     desc: "Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.",
   },
   {
-    imgUrl: "/src/assets/images/instructor/02.jpg",
+    imgUrl: review2 ,
     imgAlt: "Client thumb",
     name: "Morgana Cailot",
     date: "Posted on Jun 10, 2022 at 6:57 am",
     desc: "Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.",
   },
   {
-    imgUrl: "/src/assets/images/instructor/03.jpg",
+    imgUrl: review3,
     imgAlt: "Client thumb",
     name: "Telford Bois",
     date: "Posted on Jun 10, 2022 at 6:57 am",
     desc: "Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.",
   },
   {
-    imgUrl: "/src/assets/images/instructor/04.jpg",
+    imgUrl: review4,
     imgAlt: "Client thumb",
     name: "Cher Daviau",
     date: "Posted on Jun 10, 2022 at 6:57 am",
@@ -59,7 +62,7 @@ const Review = () => {
       imgUrl: userImg,
       imgAlt: "Client",
       name,
-      date: `Posted on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`,
+      date: `Posted on ₹{new Date().toLocaleDateString()} at ₹{new Date().toLocaleTimeString()}`,
       desc: message,
     };
 
@@ -68,12 +71,12 @@ const Review = () => {
   };
 
   return (
-    <div className="mt-10 bg-white p-6 rounded shadow">
+    <div className="w-[65%] mt-10 bg-white p-6 rounded shadow">
       {/* Tab Buttons */}
       <div className="flex gap-2 mb-6">
         <button
           onClick={() => setActiveTab("description")}
-          className={`px-5 py-2 font-semibold rounded ${
+          className={`px-5 py-2 font-semibold rounded ₹{
             activeTab === "description"
               ? "bg-blue-950 text-white"
               : "bg-orange-600 text-white hover:bg-orange-700"
@@ -83,7 +86,7 @@ const Review = () => {
         </button>
         <button
           onClick={() => setActiveTab("reviews")}
-          className={`px-5 py-2 font-semibold rounded ${
+          className={`px-5 py-2 font-semibold rounded ₹{
             activeTab === "reviews"
               ? "bg-blue-950 text-white"
               : "bg-orange-500 text-white hover:bg-orange-600"
@@ -117,7 +120,7 @@ const Review = () => {
               ))}
             </ul>
             <img
-              src={des_img}
+              src={productImg}
               alt="Product"
               className="w-60 h-60 object-contain"
             />

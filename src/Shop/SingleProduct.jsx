@@ -13,6 +13,7 @@ import Review from "./Review";
 
 // Custom arrow buttons
 const NextArrow = ({ onClick }) => (
+  
   <div
     className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 cursor-pointer"
     onClick={onClick}
@@ -62,13 +63,13 @@ const SingleProduct = () => {
       <div className="mx-[3%]">
         <div className="flex flex-col md:flex-row-reverse gap-6 px-4 py-8 max-w-7xl mx-auto">
           {/* Sidebar */}
-          <aside className="w-full md:w-[35%] space-y-6">
+          {/* <aside className="w-full md:w-[35%] space-y-6">
             <PopularPost />
             <Tags />
-          </aside>
+          </aside> */}
 
           {/* Main Product Section */}
-          <main className="w-full md:w-[65%] space-y-6">
+          <main className="w-full  space-y-6">
             <div className="flex flex-col md:flex-row gap-8">
               {/* Product Image Carousel */}
               <div className="relative w-full md:w-1/2 bg-white rounded shadow p-4">
@@ -82,11 +83,11 @@ const SingleProduct = () => {
               </div>
 
               {/* Product Information */}
-              <div className="w-full md:w-1/2 flex flex-col justify-center">
+              <div className="w-full  md:w-1/2 flex flex-col justify-center">
                 <ProductDisplay product={product} />
               </div>
             </div>
-            <Review/>
+            <Review productImg={product.img} />
           </main>
         </div>
       </div>

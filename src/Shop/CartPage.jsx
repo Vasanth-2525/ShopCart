@@ -1,49 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import PageHeader from "../Component/PageHeader";
 import CheckOutPage from "./CheckOutPage";
 import { useStore } from "../Context/StoreContext";
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems, setCartItems } = useStore();
   const [country, setCountry] = useState("Pakistan");
   const [city, setCity] = useState("Dhaka");
   const [zip, setZip] = useState("");
   const [coupon, setCoupon] = useState("");
   const [showCheckout, setShowCheckout] = useState(false);
 
-  useEffect(() => {
-    const storedCartItems = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartItems(storedCartItems);
-  }, []);
+  const uniqueCartItems = Array.from(
+    new Map(cartItems.map((item) => [item.id, item])).values()
+  );
 
   const calculateTotalPrice = (item) => item.price * item.quantity;
 
   const handleIncrease = (item) => {
     item.quantity += 1;
     setCartItems([...cartItems]);
-    updateLocalStorage(cartItems);
   };
 
   const handleDecrease = (item) => {
     if (item.quantity > 1) {
       item.quantity -= 1;
       setCartItems([...cartItems]);
-      updateLocalStorage(cartItems);
     }
   };
 
   const handleRemoveItem = (item) => {
     const updatedCart = cartItems.filter((cartItem) => cartItem.id !== item.id);
     setCartItems(updatedCart);
-    updateLocalStorage(updatedCart);
   };
 
-  const updateLocalStorage = (cart) => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  };
-
-  const cartSubtotal = cartItems.reduce(
+  const cartSubtotal = uniqueCartItems.reduce(
     (total, item) => total + calculateTotalPrice(item),
     0
   );
@@ -65,7 +57,7 @@ const CartPage = () => {
               </tr>
             </thead>
             <tbody>
-              {cartItems.map((item) => (
+              {uniqueCartItems.map((item) => (
                 <tr key={item.id} className="border-b text-sm md:text-base">
                   <td className="p-4 flex items-center gap-4 min-w-[180px]">
                     <img
@@ -75,7 +67,7 @@ const CartPage = () => {
                     />
                     <span className="font-semibold">{item.name}</span>
                   </td>
-                  <td className="p-4 font-medium">${item.price}</td>
+                  <td className="p-4 font-medium">₹{item.price}</td>
                   <td className="p-4">
                     <div className="flex items-center border rounded w-fit">
                       <button
@@ -96,7 +88,7 @@ const CartPage = () => {
                     </div>
                   </td>
                   <td className="p-4 font-medium">
-                    ${calculateTotalPrice(item).toFixed(2)}
+                    ₹{calculateTotalPrice(item).toFixed(2)}
                   </td>
                   <td className="p-4">
                     <button
@@ -183,7 +175,7 @@ const CartPage = () => {
               </button>
               <button
                 className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 font-semibold rounded w-full sm:w-auto"
-                onClick={() => setShowCheckout(true)}
+                onClick={() => setShowCheckout(!showCheckout)}
               >
                 Proceed to Checkout
               </button>
@@ -193,7 +185,7 @@ const CartPage = () => {
             <div className="flex justify-between">
               <span className="text-gray-600">Cart Subtotal</span>
               <span className="font-medium text-red-500">
-                ${cartSubtotal.toFixed(2)}
+                ₹{cartSubtotal.toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between">
@@ -202,14 +194,19 @@ const CartPage = () => {
             </div>
             <div className="flex justify-between font-bold text-lg">
               <span>Order Total</span>
-              <span className="text-red-600">${cartSubtotal.toFixed(2)}</span>
+              <span className="text-red-600">₹{cartSubtotal.toFixed(2)}</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Render the Checkout Modal if triggered */}
-      {showCheckout && <CheckOutPage />}
+      {/* Checkout Modal */}
+      {showCheckout && (
+        <CheckOutPage
+          total={cartSubtotal.toFixed(2)}
+          onClose={() => setShowCheckout(false)}
+        />
+      )}
     </>
   );
 };

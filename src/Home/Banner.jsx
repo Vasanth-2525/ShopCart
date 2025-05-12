@@ -1,38 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaAngleDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import productData from "../Product.json";
 import bgImage from "../assets/images/bg-img/06.jpg";
-
-const categories = [
-  "All Categories",
-  "Electronics",
-  "Computer",
-  "Smart Home",
-  "Automotive",
-  "Baby",
-  "Beauty",
-  "Personal Care",
-  "Fitness",
-  "Food Shop",
-  "Medical",
-  "Music",
-  "News",
-  "Restaurants",
-  "Software",
-  "Startups",
-  "University",
-  "Yoga",
-];
 
 export default function Banner() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [suggestions, setSuggestions] = useState([]);
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState(["All Categories"]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setProducts(productData);
+    const uniqueCats = [
+      "All Categories",
+      ...new Set(productData.map((p) => p.category)),
+    ];
+    setCategories(uniqueCats);
   }, []);
 
   const handleInputChange = (e) => {
@@ -53,10 +41,20 @@ export default function Banner() {
     setSuggestions(value.trim() === "" ? [] : filtered);
   };
 
+  const handleSuggestionClick = (product) => {
+    navigate("/shop", {
+      state: {
+        selectedCategory: product.category,
+        searchTerm: product.name,
+        focusProductId: product.id,
+      },
+    });
+  };
+
   return (
     <div
       className="flex items-center justify-center bg-cover bg-center px-4 py-8 md:py-13"
-      style={{ backgroundImage: `url(${bgImage})`, minHeight: "100vh" }}
+      style={{ backgroundImage: `url(₹{bgImage})`, minHeight: "100vh" }}
     >
       <div className="text-center max-w-4xl mx-auto z-10 w-full px-4">
         {/* Title */}
@@ -114,7 +112,8 @@ export default function Banner() {
             {suggestions.map((item, index) => (
               <span
                 key={index}
-                className="bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-medium shadow hover:bg-gray-100 cursor-pointer"
+                onClick={() => handleSuggestionClick(item)}
+                className="bg-white text-gray-800 px-4 py-2 rounded-full text-sm font-medium shadow hover:bg-gray-100 cursor-pointer transition"
               >
                 {item.name}
               </span>

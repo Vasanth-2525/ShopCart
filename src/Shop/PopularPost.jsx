@@ -1,30 +1,34 @@
 import React from "react";
+import pop1 from '../assets/images/blog/10.jpg'
+import pop2 from '../assets/images/blog/11.jpg'
+import pop3 from '../assets/images/blog/12.jpg'
+import pop4 from '../assets/images/blog/09.jpg'
 
 const postList = [
   {
     id: 1,
-    imgUrl: "/src/assets/images/blog/10.jpg",
+    imgUrl: pop1,
     imgAlt: "rajibraj91",
     title: "Poor People Campaign Our Resources",
     date: "Jun 05,2022",
   },
   {
     id: 2,
-    imgUrl: "/src/assets/images/blog/11.jpg",
+    imgUrl: pop2,
     imgAlt: "rajibraj91",
     title: "Poor Peoples Campaign Our Resources",
     date: "Jun 05,2022",
   },
   {
     id: 3,
-    imgUrl: "/src/assets/images/blog/12.jpg",
+    imgUrl: pop3,
     imgAlt: "rajibraj91",
     title: "Poor Peoples Campaign Our Resources",
     date: "Jun 05,2022",
   },
   {
     id: 4,
-    imgUrl: "/src/assets/images/blog/09.jpg",
+    imgUrl: pop4,
     imgAlt: "rajibraj91",
     title: "Poor Peoples Campaign Our Resources",
     date: "Jun 05,2022",

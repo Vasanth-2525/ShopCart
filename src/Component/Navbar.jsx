@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`absolute w-full z-50 transition-all duration-500 ease-in-out ${
+      className={`absolute w-full z-50 transition-all duration-500 ease-in-out ₹{
         headerFixed
           ? "fixed top-0 shadow-md bg-white/10 backdrop-blur-md fade-in-up"
           : "bg-transparent"
@@ -37,7 +37,7 @@ const Navbar = () => {
     >
       {/* Mobile Top Bar */}
       <div
-        className={`bg-amber-50 md:hidden transition-all duration-300 ${
+        className={`bg-amber-50 md:hidden transition-all duration-300 ₹{
           socialToggle ? "block" : "hidden"
         }`}
       >
@@ -84,7 +84,7 @@ const Navbar = () => {
             {["Home", "Shop", "Blog", "About", "Contact"].map((item) => (
               <Link
                 key={item}
-                to={`/${item.toLowerCase()}`}
+                to={`/₹{item.toLowerCase()}`}
                 className="text-black font-bold hover:text-yellow-500 transition-all duration-300"
               >
                 {item}
@@ -163,7 +163,7 @@ const Navbar = () => {
               {["Home", "Shop", "Blog", "About", "Contact"].map((item) => (
                 <Link
                   key={item}
-                  to={`/${item.toLowerCase()}`}
+                  to={`/₹{item.toLowerCase()}`}
                   onClick={() => setMenuToggle(false)}
                   className="py-2 hover:text-yellow-500 transition-all duration-300"
                 >

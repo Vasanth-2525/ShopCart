@@ -1,148 +1,88 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../index.css";
 import { IoMdClose } from "react-icons/io";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const CheckOutPage = () => {
+const CheckOutPage = ({ total }) => {
   const [show, setShow] = useState(true);
-  const [activeTab, setActiveTab] = useState("visa");
-
-
-  const location = useLocation();
+  const [amount, setAmount] = useState("");
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/home";
 
-  const handleTabChange = (tabId) => setActiveTab(tabId);
-  const handleClose = () => setShow(false);
+  useEffect(() => {
+    if (total) {
+      setAmount(total);
+    }
 
-  const handleOrderConfirm = () => {
-      localStorage.removeItem("cart");
-      navigate(from, { replace: true });
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [total]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!window.Razorpay) {
+      alert("Razorpay SDK failed to load.");
+      return;
+    }
+
+    const numericAmount = parseFloat(amount);
+    if (isNaN(numericAmount) || numericAmount <= 0) {
+      alert("Invalid amount");
+      return;
+    }
+
+    const options = {
+      key: "rzp_test_yTS52rDf4bQQKY",
+      amount: numericAmount * 100,
+      currency: "INR",
+      name: "STARTUP_PROJECTS",
+      description: "for testing purpose",
+      handler: function (response) {
+        alert("Payment ID: " + response.razorpay_payment_id);
+        localStorage.removeItem("cart");
+        navigate("/"); 
+      },
+      prefill: {
+        name: "Vasanth",
+        email: "vasanthlogan2525@gmail.com",
+        contact: "8110008918",
+      },
+      notes: {
+        address: "Razorpay Corporate office",
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
   };
 
   return (
     <div className="relative">
-
       {show && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/50">
-          <div className="relative w-full max-w-lg mx-4 sm:mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-            {/* Close button */}
+          <IoMdClose
+            size={30}
+            color="black"
+            onClick={() => setShow(false)} 
+            className="absolute top-[28%] right-[28%] cursor-pointer z-50"
+          />
+
+          <div className="flex flex-col items-center justify-center gap-3 w-1/2 h-1/2 text-center rounded-xl bg-white mb-4 text-lg font-semibold text-red-600">
+            <p>Total Amount: ₹{amount}</p>
             <button
-              onClick={handleClose}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl"
-              aria-label="Close"
+              onClick={handleSubmit}
+              className="p-4 bg-blue-600 text-white rounded-lg"
             >
-              <IoMdClose />
+              Click to Pay
             </button>
-
-            {/* Modal content */}
-            <div className="p-5 sm:p-6">
-              <h2 className="text-xl font-semibold text-center mb-4">
-                Select Your Payment Method
-              </h2>
-
-              {/* Tabs */}
-              <div className="flex justify-center gap-6 sm:gap-8 border-b pb-3 mb-5">
-                <div
-                  onClick={() => handleTabChange("visa")}
-                  className={`cursor-pointer flex items-center gap-2 pb-1 ${
-                    activeTab === "visa" ? "border-b-2 border-blue-600" : ""
-                  }`}
-                >
-                  <img
-                    src="https://img.icons8.com/color/48/visa.png"
-                    alt="Visa"
-                    className="h-6"
-                  />
-                  <img
-                    src="https://img.icons8.com/color/48/mastercard.png"
-                    alt="MasterCard"
-                    className="h-6"
-                  />
-                </div>
-                <div
-                  onClick={() => handleTabChange("paypal")}
-                  className={`cursor-pointer flex items-center gap-2 pb-1 ${
-                    activeTab === "paypal" ? "border-b-2 border-blue-600" : ""
-                  }`}
-                >
-                  <img
-                    src="https://img.icons8.com/color/48/paypal.png"
-                    alt="PayPal"
-                    className="h-6"
-                  />
-                </div>
-              </div>
-
-              {/* Payment Form */}
-              {activeTab === "visa" ? (
-                <>
-                  <h3 className="text-base font-medium mb-2">Credit Card</h3>
-                  <input
-                    type="text"
-                    placeholder="Cardholder Name"
-                    className="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md text-sm"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Card Number"
-                    className="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md text-sm"
-                  />
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="text"
-                      placeholder="Expiration Date"
-                      className="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-md text-sm"
-                    />
-                    <input
-                      type="text"
-                      placeholder="CVV"
-                      className="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-md text-sm"
-                    />
-                  </div>
-                  <button
-                    onClick={handleOrderConfirm}
-                    className="mt-5 w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
-                  >
-                    Add Card
-                  </button>
-                </>
-              ) : (
-                <>
-                  <h3 className="text-base font-medium mb-2">
-                    PayPal Account Info
-                  </h3>
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md text-sm"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md text-sm"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Extra Info"
-                    className="w-full mb-3 px-4 py-2 border border-gray-300 rounded-md text-sm"
-                  />
-                  <button
-                    onClick={handleOrderConfirm}
-                    className="mt-5 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-                  >
-                    Add PayPal
-                  </button>
-                </>
-              )}
-
-              {/* Disclaimer */}
-              <p className="text-xs text-gray-500 mt-4">
-                <strong>Payment Disclaimer:</strong> In no event shall payment
-                or partial payment by Owner for any material or service be
-                considered...
-              </p>
-            </div>
           </div>
         </div>
       )}

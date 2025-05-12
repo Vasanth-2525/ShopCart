@@ -8,7 +8,7 @@ const PageNavigation = ({ currentPage, totalPages, onPageChange }) => {
       <button
         key={i}
         onClick={() => onPageChange(i)}
-        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${
+        className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ₹{
           currentPage === i
             ? "bg-yellow-400 text-white"
             : "text-gray-700 hover:bg-gray-200"

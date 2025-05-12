@@ -1,31 +1,35 @@
 import React, { useRef, useState } from "react";
 import PageHeader from "../Component/PageHeader";
 import emailjs from "@emailjs/browser";
+import contact1 from '../assets/images/icon/01.png'
+import contact2 from '../assets/images/icon/02.png'
+import contact3 from '../assets/images/icon/03.png'
+import contact4 from '../assets/images/icon/04.png'
 
 const subTitle = "Get in touch with us";
 const title = "We're Always Eager To Hear From You!";
 
 const contactList = [
   {
-    imgUrl: "/src/assets/images/icon/01.png",
+    imgUrl: contact1,
     imgAlt: "contact icon",
     title: "Office Address",
     desc: "1201 park street, Fifth Avenue",
   },
   {
-    imgUrl: "/src/assets/images/icon/02.png",
+    imgUrl: contact2,
     imgAlt: "contact icon",
     title: "Phone number",
     desc: "+22698 745 632, 02 982 745",
   },
   {
-    imgUrl: "/src/assets/images/icon/03.png",
+    imgUrl: contact3,
     imgAlt: "contact icon",
     title: "Send email",
     desc: "admin@shopcart.com",
   },
   {
-    imgUrl: "/src/assets/images/icon/04.png",
+    imgUrl:contact4,
     imgAlt: "contact icon",
     title: "Our website",
     desc: "www.shopcart.com",

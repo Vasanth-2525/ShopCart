@@ -33,9 +33,9 @@ const SingleBlog = () => {
     <>
       <PageHeader title="Single Blog Page" curPage="Blog / BlogDetails" />
       <div className="bg-amber-50 px-[5%]">
-        <div className="bg- max-w-1xl mx-auto py-20 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left - Blog Content */}
-          <div className=" bg-white p-3 lg:col-span-2 space-y-6">
+        <div className="py-20 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left - Blog Content */} 
+          <div className="w-full bg-white p-3 lg:col-span-2 space-y-6">
             <img
               src={blog.imgUrl}
               alt={blog.imgAlt}
@@ -128,7 +128,7 @@ const SingleBlog = () => {
                 </div>
               </a>
             </div>
-            <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
+            <div className="max-w-auto mx-auto px-4 py-8 space-y-8">
               {/* Paragraph Block */}
               <p className="text-gray-700  text-justify text-base leading-relaxed">
                 Whole heart create am alones and feel the charm of exstenceth
@@ -180,7 +180,7 @@ const SingleBlog = () => {
                       « Previous Article
                     </p>
                     <Link
-                      to={`/blog/${prevBlog.id}`}
+                      to={`/blog/₹{prevBlog.id}`}
                       className="hover:underline"
                     >
                       {prevBlog.title}
@@ -196,7 +196,7 @@ const SingleBlog = () => {
                       Next Article »
                     </p>
                     <Link
-                      to={`/blog/${nextBlog.id}`}
+                      to={`/blog/₹{nextBlog.id}`}
                       className="hover:underline"
                     >
                       {nextBlog.title}
@@ -211,9 +211,8 @@ const SingleBlog = () => {
 
           {/* Right - Sidebar */}
           <aside className="space-y-8 md:sticky md:top-24 md:max-h-[calc(100vh)] md:overflow-y-auto">
-            <Tags />
-
             <PopularPost />
+             <Tags />
           </aside>
         </div>
       </div>

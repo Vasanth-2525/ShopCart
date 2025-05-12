@@ -27,7 +27,7 @@ export default function Register() {
   return (
     <div
       className="flex items-center justify-center bg-center px-4 py-8 md:py-13"
-      style={{ backgroundImage: `url(${bgImage})`, minHeight: "70vh" }}
+      style={{ backgroundImage: `url(₹{bgImage})`, minHeight: "70vh" }}
     >
       <div className="w-full ml-[7%] max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-[#76277aa0] md:bg-transparent rounded-xl  p-6 md:p-0">
         {/* Left Side - Promo Text */}
@@ -55,18 +55,21 @@ export default function Register() {
               name="name"
               placeholder="Username"
               className="w-full bg-white px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              required
             />
             <input
               type="email"
               name="email"
               placeholder="Email"
               className="w-full bg-white px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              required
             />
             <input
               type="tel"
               name="message"
               placeholder="Phone"
               className="w-full bg-white px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              required
             />
             <button
               type="submit"
