@@ -8,24 +8,26 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import app from "../firebase/firebase.config"; // ✅ Import your initialized Firebase app
+import app from "../firebase/firebase.config"; // ✅ Make sure this path is correct and the file exists
 
+// Create context
 export const AuthContext = createContext();
 
-const auth = getAuth(app); // ✅ Pass the initialized app here
+// Initialize Firebase Auth
+const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Create user with email/password
+  // Register user with email/password
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // Login with Google
+  // Sign in with Google
   const signUpWithGmail = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
@@ -39,17 +41,18 @@ const AuthProvider = ({ children }) => {
 
   // Logout
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
-  // Track auth state changes
+  // Observe user state change
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      setUser(currentuser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
       setLoading(false);
     });
 
-    return () => unsubscribe(); // ✅ Clean up the listener
+    return () => unsubscribe(); // ✅ Cleanup listener
   }, []);
 
   const authInfo = {
@@ -62,9 +65,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 
