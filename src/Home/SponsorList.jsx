@@ -1,16 +1,22 @@
-import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import s1 from "../assets/images/sponsor/01.png";
+import s2 from "../assets/images/sponsor/02.png";
+import s3 from "../assets/images/sponsor/03.png";
+import s4 from "../assets/images/sponsor/04.png";
+import s5 from "../assets/images/sponsor/05.png";
+import s6 from "../assets/images/sponsor/06.png";
 
 const sponsorList = [
-  { imgUrl: "/src/assets/images/sponsor/01.png" },
-  { imgUrl: "/src/assets/images/sponsor/02.png" },
-  { imgUrl: "/src/assets/images/sponsor/03.png" },
-  { imgUrl: "/src/assets/images/sponsor/04.png" },
-  { imgUrl: "/src/assets/images/sponsor/05.png" },
-  { imgUrl: "/src/assets/images/sponsor/06.png" },
+  { imgUrl: s1 },
+  { imgUrl: s2 },
+  { imgUrl: s3 },
+  { imgUrl: s4 },
+  { imgUrl: s5 },
+  { imgUrl: s6 },
 ];
+
 
 const SponsorList = () => {
   const settings = {
