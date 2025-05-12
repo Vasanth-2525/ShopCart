@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../index.css";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useStore } from "../Context/StoreContext"; 
 
 const CheckOutPage = ({ total }) => {
   const [show, setShow] = useState(true);
   const [amount, setAmount] = useState("");
   const navigate = useNavigate();
+  const { setCartItems } = useStore(); 
 
   useEffect(() => {
     if (total) {
@@ -44,8 +46,9 @@ const CheckOutPage = ({ total }) => {
       description: "for testing purpose",
       handler: function (response) {
         alert("Payment ID: " + response.razorpay_payment_id);
-        localStorage.removeItem("cart");
-        navigate("/"); 
+        localStorage.removeItem("cart");    
+        setCartItems([]);                 
+        navigate("/");                     
       },
       prefill: {
         name: "Vasanth",
@@ -71,7 +74,7 @@ const CheckOutPage = ({ total }) => {
           <IoMdClose
             size={30}
             color="black"
-            onClick={() => setShow(false)} 
+            onClick={() => setShow(false)}
             className="absolute top-[28%] right-[28%] cursor-pointer z-50"
           />
 

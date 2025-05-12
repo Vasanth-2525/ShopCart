@@ -77,13 +77,13 @@ const Shop = () => {
               <div className="flex gap-2">
                 <button
                   onClick={() => setView("grid")}
-                  className={`p-2 border ₹{view === "grid" ? "bg-yellow-400 text-white" : ""}`}
+                  className={`p-2 border ${view === "grid" ? "bg-yellow-400 text-white" : ""}`}
                 >
                   <FaTh />
                 </button>
                 <button
                   onClick={() => setView("list")}
-                  className={`p-2 border ₹{view === "list" ? "bg-yellow-400 text-white" : ""}`}
+                  className={`p-2 border ${view === "list" ? "bg-yellow-400 text-white" : ""}`}
                 >
                   <FaBars />
                 </button>
@@ -92,7 +92,7 @@ const Shop = () => {
 
             {/* Product Display */}
             <div
-              className={`grid ₹{
+              className={`grid ${
                 view === "grid"
                   ? "grid-cols-1 sm:grid-cols-3 gap-6"
                   : "grid-cols-1 gap-4"

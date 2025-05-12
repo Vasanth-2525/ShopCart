@@ -28,7 +28,7 @@ const Search = ({
             <button
               key={i}
               onClick={() => onCategoryChange(cat)}
-              className={`px-4 py-2 text-sm ₹{
+              className={`px-4 py-2 text-sm ${
                 selectedCategory === cat
                   ? "bg-yellow-400 text-white"
                   : "bg-gray-200 text-gray-800"

@@ -62,7 +62,7 @@ const Review = ({ productImg }) => {
       imgUrl: userImg,
       imgAlt: "Client",
       name,
-      date: `Posted on ₹{new Date().toLocaleDateString()} at ₹{new Date().toLocaleTimeString()}`,
+      date: `Posted on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`,
       desc: message,
     };
 
@@ -76,7 +76,7 @@ const Review = ({ productImg }) => {
       <div className="flex gap-2 mb-6">
         <button
           onClick={() => setActiveTab("description")}
-          className={`px-5 py-2 font-semibold rounded ₹{
+          className={`px-5 py-2 font-semibold rounded ${
             activeTab === "description"
               ? "bg-blue-950 text-white"
               : "bg-orange-600 text-white hover:bg-orange-700"
@@ -86,7 +86,7 @@ const Review = ({ productImg }) => {
         </button>
         <button
           onClick={() => setActiveTab("reviews")}
-          className={`px-5 py-2 font-semibold rounded ₹{
+          className={`px-5 py-2 font-semibold rounded ${
             activeTab === "reviews"
               ? "bg-blue-950 text-white"
               : "bg-orange-500 text-white hover:bg-orange-600"

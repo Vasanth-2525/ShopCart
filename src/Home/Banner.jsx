@@ -54,7 +54,7 @@ export default function Banner() {
   return (
     <div
       className="flex items-center justify-center bg-cover bg-center px-4 py-8 md:py-13"
-      style={{ backgroundImage: `url(₹{bgImage})`, minHeight: "100vh" }}
+      style={{ backgroundImage: `url(${bgImage})`, minHeight: "100vh" }}
     >
       <div className="text-center max-w-4xl mx-auto z-10 w-full px-4">
         {/* Title */}

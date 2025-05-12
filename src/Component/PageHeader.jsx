@@ -7,7 +7,7 @@ const PageHeader = ({ title, curPage }) => {
     <div
       className="flex items-center justify-center bg-cover bg-center px-4"
       style={{
-        backgroundImage: `url(₹{bgImage})`,
+        backgroundImage: `url(${bgImage})`,
         minHeight: "70vh",
         backgroundPosition: "center",
         backgroundSize: "cover",

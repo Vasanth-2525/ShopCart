@@ -57,7 +57,7 @@ const SponsorList = () => {
           <div key={index} className=" flex items-center  justify-center px-15">
             <img
               src={item.imgUrl}
-              alt={`Sponsor ₹{index + 1}`}
+              alt={`Sponsor ${index + 1}`}
               className="max-h-16 object-contain"
             />
           </div>

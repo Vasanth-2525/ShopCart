@@ -23,7 +23,7 @@ const Blog = () => {
 
             <div className="p-5 space-y-3">
               <Link
-                to={`/blog/₹{blog.id}`}
+                to={`/blog/${blog.id}`}
                 className="text-lg font-bold text-gray-800 hover:text-orange-500"
               >
                 {blog.title}
@@ -44,7 +44,7 @@ const Blog = () => {
 
               <div className="flex justify-between items-center pt-4">
                 <Link
-                  to={`/blog/₹{blog.id}`}
+                  to={`/blog/${blog.id}`}
                   className="text-orange-500 hover:underline text-sm font-medium flex items-center gap-1"
                 >
                   {blog.btnText || "Read More"}

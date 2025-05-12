@@ -25,7 +25,7 @@ export default function ClientMap() {
 
       <div
         className="relative w-full max-w-6xl h-[300px] sm:h-[400px] md:h-[500px] bg-no-repeat bg-contain bg-center"
-        style={{ backgroundImage: `url(₹{worldMap})` }}
+        style={{ backgroundImage: `url(${worldMap})` }}
       >
         {clientPositions.map((pos, index) => (
           <div
@@ -39,12 +39,12 @@ export default function ClientMap() {
           >
             {/* Hover-controlled pulsing circle */}
             <span
-              className={`absolute w-3 h-3 sm:w-7 sm:h-7 ₹{pos.color} rounded-full opacity-70 group-hover:animate-ping`}
+              className={`absolute w-3 h-3 sm:w-7 sm:h-7 ${pos.color} rounded-full opacity-70 group-hover:animate-ping`}
             ></span>
 
             {/* Static dot */}
             <span
-              className={`relative w-3 h-3 sm:w-2 sm:h-2 ₹{pos.color} rounded-full z-10`}
+              className={`relative w-3 h-3 sm:w-2 sm:h-2 ${pos.color} rounded-full z-10`}
             ></span>
 
             {/* Avatar + tooltip */}

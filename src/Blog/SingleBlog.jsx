@@ -180,7 +180,7 @@ const SingleBlog = () => {
                       « Previous Article
                     </p>
                     <Link
-                      to={`/blog/₹{prevBlog.id}`}
+                      to={`/blog/${prevBlog.id}`}
                       className="hover:underline"
                     >
                       {prevBlog.title}
@@ -196,7 +196,7 @@ const SingleBlog = () => {
                       Next Article »
                     </p>
                     <Link
-                      to={`/blog/₹{nextBlog.id}`}
+                      to={`/blog/${nextBlog.id}`}
                       className="hover:underline"
                     >
                       {nextBlog.title}

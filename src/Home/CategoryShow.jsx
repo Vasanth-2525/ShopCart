@@ -20,7 +20,7 @@ const ProductData = [
     cate: "Shoes",
     title: "Nike Premier X",
     brand: "Nike",
-    price: "₹199.00",
+    price: "$199.00",
     id: 1,
   },
   {
@@ -28,7 +28,7 @@ const ProductData = [
     cate: "Bags",
     title: "Asthetic Bags",
     brand: "D&J Bags",
-    price: "₹199.00",
+    price: "$199.00",
     id: 2,
   },
   {
@@ -36,7 +36,7 @@ const ProductData = [
     cate: "Phones",
     title: "iPhone 12",
     brand: "Apple",
-    price: "₹199.00",
+    price: "$199.00",
     id: 3,
   },
   {
@@ -44,7 +44,7 @@ const ProductData = [
     cate: "Bags",
     title: "Hiking Bag 15 Nh100",
     brand: "Gucci",
-    price: "₹199.00",
+    price: "$199.00",
     id: 4,
   },
   {
@@ -52,7 +52,7 @@ const ProductData = [
     cate: "Shoes",
     title: "Outdoor Sports Shoes",
     brand: "Nike",
-    price: "₹199.00",
+    price: "$199.00",
     id: 5,
   },
   {
@@ -60,7 +60,7 @@ const ProductData = [
     cate: "Beauty",
     title: "COSRX Snail Mucin",
     brand: "Zaara",
-    price: "₹199.00",
+    price: "$199.00",
     id: 6,
   },
   {
@@ -68,7 +68,7 @@ const ProductData = [
     cate: "Bags",
     title: "Look Less Chanel Bag",
     brand: "Gucci",
-    price: "₹199.00",
+    price: "$199.00",
     id: 7,
   },
   {
@@ -76,7 +76,7 @@ const ProductData = [
     cate: "Shoes",
     title: "Casual Sneakers",
     brand: "Bata",
-    price: "₹199.00",
+    price: "$199.00",
     id: 8,
   },
 ];
@@ -102,7 +102,7 @@ const CategoryShow = () => {
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-md text-sm border transition ₹{
+              className={`px-4 py-2 rounded-md text-sm border transition ${
                 filter === cat
                   ? "bg-yellow-400 text-white border-yellow-400"
                   : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"

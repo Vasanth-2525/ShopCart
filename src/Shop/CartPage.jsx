@@ -6,8 +6,8 @@ import { useStore } from "../Context/StoreContext";
 
 const CartPage = () => {
   const { cartItems, setCartItems } = useStore();
-  const [country, setCountry] = useState("Pakistan");
-  const [city, setCity] = useState("Dhaka");
+  const [country, setCountry] = useState("India");
+  const [city, setCity] = useState("New Delhi");
   const [zip, setZip] = useState("");
   const [coupon, setCoupon] = useState("");
   const [showCheckout, setShowCheckout] = useState(false);
@@ -67,7 +67,7 @@ const CartPage = () => {
                     />
                     <span className="font-semibold">{item.name}</span>
                   </td>
-                  <td className="p-4 font-medium">₹{item.price}</td>
+                  <td className="p-4 font-medium">${item.price}</td>
                   <td className="p-4">
                     <div className="flex items-center border rounded w-fit">
                       <button
@@ -88,7 +88,7 @@ const CartPage = () => {
                     </div>
                   </td>
                   <td className="p-4 font-medium">
-                    ₹{calculateTotalPrice(item).toFixed(2)}
+                    ${calculateTotalPrice(item).toFixed(2)}
                   </td>
                   <td className="p-4">
                     <button
@@ -185,7 +185,7 @@ const CartPage = () => {
             <div className="flex justify-between">
               <span className="text-gray-600">Cart Subtotal</span>
               <span className="font-medium text-red-500">
-                ₹{cartSubtotal.toFixed(2)}
+                ${cartSubtotal.toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between">
@@ -194,7 +194,7 @@ const CartPage = () => {
             </div>
             <div className="flex justify-between font-bold text-lg">
               <span>Order Total</span>
-              <span className="text-red-600">₹{cartSubtotal.toFixed(2)}</span>
+              <span className="text-red-600">${cartSubtotal.toFixed(2)}</span>
             </div>
           </div>
         </div>

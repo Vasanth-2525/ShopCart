@@ -113,7 +113,7 @@ const AboutUs = () => {
 const Stat = ({ icon, number, label, color, animate }) => (
   <div className="flex items-center gap-4">
     <div
-      className={`w-14 h-14 sm:w-16 sm:h-16 ₹{color} rounded-full flex items-center justify-center text-white text-xl sm:text-2xl shadow-md`}
+      className={`w-14 h-14 sm:w-16 sm:h-16 ${color} rounded-full flex items-center justify-center text-white text-xl sm:text-2xl shadow-md`}
     >
       {icon}
     </div>

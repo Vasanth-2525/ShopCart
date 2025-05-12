@@ -113,7 +113,7 @@ const ProductDisplay = ({ product }) => {
             </span>
           </div>
 
-          <p className="text-2xl font-semibold text-gray-800 mt-2">₹{price}</p>
+          <p className="text-2xl font-semibold text-gray-800 mt-2">${price}</p>
           <p className="text-sm text-gray-600 mt-1">{seller}</p>
 
           <p className="text-sm text-gray-500 mt-4">
