@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="absolute top-[20%] left=[45%] h-lvh">Loading ...</div>;
   }
 
   if (user) {

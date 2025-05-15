@@ -76,7 +76,7 @@ const ProductCard = ({ product, view }) => {
           {renderStars(product.ratings)}
         </div>
 
-        <div className="text-gray-800 font-bold">${product.price}</div>
+        <div className="text-gray-800 font-bold">₹{product.price}</div>
       </div>
     </div>
   );

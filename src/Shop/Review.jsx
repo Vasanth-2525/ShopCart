@@ -71,7 +71,7 @@ const Review = ({ productImg }) => {
   };
 
   return (
-    <div className="w-[65%] mt-10 bg-white p-6 rounded shadow">
+    <div className="w-full md:w-[65%] mt-10 bg-white p-6 rounded shadow">
       {/* Tab Buttons */}
       <div className="flex gap-2 mb-6">
         <button

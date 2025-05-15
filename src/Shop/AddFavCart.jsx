@@ -63,13 +63,6 @@ const AddFavCart = () => {
                   >
                     <FaRegEye />
                   </Link>
-                  <Link
-                    to="/cart-page"
-                    className="bg-orange-400 text-white p-3 rounded-full hover:bg-orange-500"
-                    title="Go to Cart"
-                  >
-                    <FaShoppingCart />
-                  </Link>
                 </div>
               </div>
 
@@ -84,7 +77,7 @@ const AddFavCart = () => {
                 {/* Remove Button */}
                 <button
                   onClick={() => removeFromFavorites(item.id)}
-                  className="absolute top-4 right-4 text-red-500 hover:text-red-700"
+                  className="absolute top-4 right-4 text-orange-400 hover:text-orange-500"
                   title="Remove from favorites"
                 >
                   <FaTrash />

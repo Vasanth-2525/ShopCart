@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import PageHeader from "../Component/PageHeader";
-import CheckOutPage from "./CheckOutPage";
+
 import { useStore } from "../Context/StoreContext";
+import PaymentPage from "./PaymentPage";
 
 const CartPage = () => {
   const { cartItems, setCartItems } = useStore();
@@ -67,7 +68,7 @@ const CartPage = () => {
                     />
                     <span className="font-semibold">{item.name}</span>
                   </td>
-                  <td className="p-4 font-medium">${item.price}</td>
+                  <td className="p-4 font-medium">₹{item.price}</td>
                   <td className="p-4">
                     <div className="flex items-center border rounded w-fit">
                       <button
@@ -88,7 +89,7 @@ const CartPage = () => {
                     </div>
                   </td>
                   <td className="p-4 font-medium">
-                    ${calculateTotalPrice(item).toFixed(2)}
+                    ₹{calculateTotalPrice(item).toFixed(2)}
                   </td>
                   <td className="p-4">
                     <button
@@ -105,11 +106,10 @@ const CartPage = () => {
         </div>
 
         {/* Controls Section */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Left Column */}
-          <div className="space-y-6">
+        <div>
+          <div className="space-y-6 lg:flex items-center justify-between">
             {/* Coupon Input */}
-            <div className="space-y-2">
+            <div className="space-y-6">
               <h3 className="text-lg font-semibold">Have a Coupon?</h3>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
@@ -126,12 +126,13 @@ const CartPage = () => {
             </div>
 
             {/* Shipping Inputs */}
-            <div className="space-y-3">
+            <div className="space-y-6">
               <h3 className="text-lg font-semibold">Calculate Shipping</h3>
               <div className="flex flex-col sm:flex-row gap-3">
                 <select
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
+                  required
                   className="border border-gray-300 px-4 py-2 flex-1"
                 >
                   <option value="India">India</option>
@@ -144,6 +145,7 @@ const CartPage = () => {
                 <select
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
+                  required
                   className="border border-gray-300 px-4 py-2 flex-1"
                 >
                   <option value="Karachi">Karachi</option>
@@ -159,42 +161,16 @@ const CartPage = () => {
                   onChange={(e) => setZip(e.target.value)}
                   placeholder="ZIP/Postal"
                   className="border border-gray-300 px-4 py-2 flex-1"
+                  required  
                 />
               </div>
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded w-full sm:w-auto">
-                Update Total
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="space-y-4 border border-gray-200 p-6 rounded">
-            <div className="flex flex-col sm:flex-row gap-3 justify-between">
-              <button className="border border-gray-300 hover:text-orange-600 py-2 px-4 font-semibold rounded w-full sm:w-auto">
-                Update Cart
-              </button>
               <button
-                className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 font-semibold rounded w-full sm:w-auto"
+                type="submit"
                 onClick={() => setShowCheckout(!showCheckout)}
+                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded w-full sm:w-auto"
               >
-                Proceed to Checkout
+                Procced To CheckOut
               </button>
-            </div>
-
-            <h3 className="text-xl font-bold">Cart Totals</h3>
-            <div className="flex justify-between">
-              <span className="text-gray-600">Cart Subtotal</span>
-              <span className="font-medium text-red-500">
-                ${cartSubtotal.toFixed(2)}
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">Shipping and Handling</span>
-              <span className="text-green-500 font-medium">Free Shipping</span>
-            </div>
-            <div className="flex justify-between font-bold text-lg">
-              <span>Order Total</span>
-              <span className="text-red-600">${cartSubtotal.toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -202,7 +178,7 @@ const CartPage = () => {
 
       {/* Checkout Modal */}
       {showCheckout && (
-        <CheckOutPage
+        <PaymentPage
           total={cartSubtotal.toFixed(2)}
           onClose={() => setShowCheckout(false)}
         />
